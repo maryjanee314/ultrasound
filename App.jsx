@@ -6,7 +6,7 @@ function App() {
 
   const handleShowGender = () => {
     setShowGender(true);
-    // Add logic to play gender reveal video
+    // Logic to play the gender reveal video can go here if needed.
   };
 
   const handleCloseUi = () => {
@@ -33,7 +33,6 @@ function App() {
           </video>
         </div>
       )}
-      <button className="close-button" onClick={handleCloseUi}>Close</button>
     </div>
   );
 }

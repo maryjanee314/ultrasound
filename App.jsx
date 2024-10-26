@@ -3,9 +3,9 @@ import Button from './Button';
 
 const App = () => {
     const videoRef = useRef(null); // Reference for the video element
-    const [genderNotification, setGenderNotification] = useState(''); // State for gender notification
-    const [genderShown, setGenderShown] = useState(false); // State to track if gender has been shown
     const [videoPlaying, setVideoPlaying] = useState(false); // Track if video is playing
+    const [genderShown, setGenderShown] = useState(false); // Track if gender has been shown
+    const additionalVideos = ['video1.mp4', 'video2.mp4']; // Array of additional videos
 
     // Function to play the ultrasound video
     const handleShowUltrasound = () => {
@@ -18,13 +18,15 @@ const App = () => {
         }
     };
 
-    // Function to show gender notification only once
+    // Function to switch to a random additional video
     const handleShowGender = () => {
-        if (!genderShown) {
-            const randomGender = Math.random() < 0.5 ? 'Male' : 'Female';
-            setGenderNotification(`Gender: ${randomGender}`);
-            setGenderShown(true); // Disable further presses
-            setTimeout(() => setGenderNotification(''), 3000); // Hide notification after 3 seconds
+        if (videoPlaying && !genderShown) {
+            const randomIndex = Math.floor(Math.random() * additionalVideos.length);
+            const newSrc = additionalVideos[randomIndex]; // Change to a random additional video
+            console.log("Switching to video:", newSrc); // Log the source
+            videoRef.current.src = newSrc; // Set the new source
+            videoRef.current.play(); // Play the new video
+            setGenderShown(true); // Mark gender as shown to disable button
         }
     };
 
@@ -66,10 +68,10 @@ const App = () => {
                 )}
             </div>
 
-            {/* Display gender notification if set */}
-            {genderNotification && (
+            {/* Optionally, you could add a message that the gender has already been shown */}
+            {genderShown && (
                 <div className="gender-notification">
-                    {genderNotification}
+                    Gender information has already been shown.
                 </div>
             )}
         </div>

@@ -31,12 +31,13 @@ const App = () => {
     };
 
     const handleCloseUi = () => {
-      fetch(`https://ultrasound/closeUi`, { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'close' })
+      fetch(`https://ultrasound/closeUi`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'close' })
       });
-    };
+  };
+  
 
     return (
       <div className="app-container">

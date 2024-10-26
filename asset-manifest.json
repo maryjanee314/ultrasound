@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/%7Bultrasound%7D.%E2%80%9D/static/css/main.d8685239.css",
+    "main.js": "/%7Bultrasound%7D.%E2%80%9D/static/js/main.fe891463.js",
+    "index.html": "/%7Bultrasound%7D.%E2%80%9D/index.html",
+    "main.d8685239.css.map": "/%7Bultrasound%7D.%E2%80%9D/static/css/main.d8685239.css.map",
+    "main.fe891463.js.map": "/%7Bultrasound%7D.%E2%80%9D/static/js/main.fe891463.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8685239.css",
+    "static/js/main.fe891463.js"
+  ]
+}

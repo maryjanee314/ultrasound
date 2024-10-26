@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ultrasound/static/css/main.d8685239.css",
-    "main.js": "/ultrasound/static/js/main.fe891463.js",
+    "main.css": "/ultrasound/static/css/main.403978bb.css",
+    "main.js": "/ultrasound/static/js/main.4d56e050.js",
     "index.html": "/ultrasound/index.html",
-    "main.d8685239.css.map": "/ultrasound/static/css/main.d8685239.css.map",
-    "main.fe891463.js.map": "/ultrasound/static/js/main.fe891463.js.map"
+    "main.403978bb.css.map": "/ultrasound/static/css/main.403978bb.css.map",
+    "main.4d56e050.js.map": "/ultrasound/static/js/main.4d56e050.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8685239.css",
-    "static/js/main.fe891463.js"
+    "static/css/main.403978bb.css",
+    "static/js/main.4d56e050.js"
   ]
 }

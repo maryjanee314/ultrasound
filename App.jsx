@@ -68,6 +68,12 @@ const App = () => {
                 )}
             </div>
 
+            <div id="uiContainer">
+        <h1>Ultrasound Interface</h1>
+        <button id="closeButton" onClick={handleClose}>Close</button>
+        {/* Other interactive elements */}
+    </div>
+
             {/* Optionally, you could add a message that the gender has already been shown */}
             {genderShown && (
                 <div className="gender-notification">

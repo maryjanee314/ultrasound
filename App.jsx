@@ -30,52 +30,29 @@ const App = () => {
         }
     };
 
+    const handleCloseUi = () => {
+      fetch(`https://ultrasound/closeUi`, { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'close' })
+      });
+    };
+
     return (
-        <div>
-            <h1>Ultrasound Menu</h1>
-
-            {/* Show Ultrasound Button */}
-            {!videoPlaying && (
-                <Button className="show-ultrasound" onClick={handleShowUltrasound}>
-                    Show Ultrasound
-                </Button>
-            )}
-
-            {/* Video element with overlay button */}
-            <div style={{ position: 'relative' }}>
-                <video 
-                    ref={videoRef} 
-                    style={{ display: 'none', width: '100vw', height: '100vh', objectFit: 'cover' }} 
-                    loop 
-                    onEnded={() => { 
-                        videoRef.current.pause(); 
-                        videoRef.current.style.display = 'none';
-                        setVideoPlaying(false); // Reset video playing status
-                    }}
-                >
-                    <source src="video.mp4" type="video/mp4" />
-                    Your browser does not support HTML5 video.
-                </video>
-
-                {/* Show Gender button overlay */}
-                {videoPlaying && !genderShown && (
-                    <button 
-                        onClick={handleShowGender} 
-                        className="gender-button"
-                    >
-                        Show Gender
-                    </button>
-                )}
-            </div>
-
-            {/* Optionally, you could add a message that the gender has already been shown */}
-            {genderShown && (
-                <div className="gender-notification">
-                    Gender information has already been shown.
-                </div>
-            )}
-        </div>
+      <div className="app-container">
+        {!showGender ? (
+          <button className="pink-button" onClick={handleShowGender}>
+            Show Gender
+          </button>
+        ) : (
+          <video className="video-player" autoPlay loop>
+            <source src="/path/to/your/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+        <button className="close-button" onClick={handleCloseUi}>Close</button>
+      </div>
     );
-};
-
-export default App;
+  }
+  
+  export default App;

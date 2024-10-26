@@ -1,0 +1,73 @@
+/* app.css */
+
+body {
+  background-color: #ffeef8; /* Light pink background */
+  color: #ff69b4; /* Pink text color */
+  font-family: 'Arial', sans-serif; /* Font family */
+  text-align: center; /* Center the text */
+  padding: 50px; /* Padding around the body */
+}
+
+.button {
+  background-color: #ff69b4; /* Pink button color */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 15px 30px; /* Padding inside the button */
+  text-align: center; /* Center text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Align with text */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #ff1493; /* Darker pink on hover */
+}
+
+ul {
+  list-style-type: none; /* Remove bullet points from list */
+  padding: 0; /* Remove padding */
+}
+
+li {
+  margin: 10px 0; /* Space between list items */
+}
+
+
+video {
+  display: none; /* Initially hidden */
+  max-width: 100%; /* Responsive video */
+  border-radius: 20px; /* Rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the video */
+  margin-top: 20px; /* Spacing from the button */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+/* app.css */
+
+.gender-indicator {
+  margin-top: 20px; /* Space above */
+  font-size: 24px; /* Larger text */
+  color: #ff1493; /* Pink color for the text */
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+

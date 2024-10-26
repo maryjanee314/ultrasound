@@ -1,0 +1,128 @@
+/* Basic styling for the body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Center alignment for the app container */
+#root, .app-container {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Header styling */
+h1 {
+  font-size: 2em;
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
+/* Main button styling */
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff85a2;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Show Ultrasound button */
+button.show-ultrasound {
+  background-color: #e75480;
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* Gender button that overlays on the video */
+.gender-button {
+  background-color: #ff85a2;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.gender-button:hover {
+  opacity: 1;
+}
+
+/* Video styling for full-screen effect */
+video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: none; /* Hidden until played */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Gender notification styling */
+/* Style for the Gender Notification */
+.gender-notification {
+  position: absolute; /* Position over the video */
+  bottom: 60%; /* Adjust to place it higher */
+  right: 5%; /* Align to the right side */
+  background-color: rgba(255, 192, 203, 0.9); /* Light pink background with transparency */
+  color: #fff; /* White text color */
+  font-size: 24px; /* Larger font size */
+  padding: 10px 20px; /* Padding for better appearance */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  z-index: 10; /* Ensure it's above other elements */
+  transition: opacity 0.3s ease; /* Smooth transition for visibility */
+}
+
+
+/* Add a subtle animation */
+.gender-notification.show {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translate(-50%, 10px);
+  }
+  to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+h1 {
+    font-family: 'Pacifico', cursive;
+}

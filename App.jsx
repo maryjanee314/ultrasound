@@ -5,6 +5,7 @@ const App = () => {
     const videoRef = useRef(null); // Reference for the video element
     const [genderNotification, setGenderNotification] = useState(''); // State for gender notification
     const [genderShown, setGenderShown] = useState(false); // State to track if gender has been shown
+    const [videoPlaying, setVideoPlaying] = useState(false); // Track if video is playing
 
     // Function to play the ultrasound video
     const handleShowUltrasound = () => {
@@ -12,7 +13,8 @@ const App = () => {
             videoRef.current.src = 'video.mp4'; // Ensure the path is correct
             videoRef.current.play();
             videoRef.current.style.display = 'block'; // Show the video when playing
-            setGenderShown(false); // Reset gender button each time video is played
+            setVideoPlaying(true); // Video is now playing
+            setGenderShown(false); // Reset gender button for new video session
         }
     };
 
@@ -29,29 +31,35 @@ const App = () => {
     return (
         <div>
             <h1>Ultrasound Menu</h1>
-            <Button onClick={handleShowUltrasound}>Show Ultrasound</Button>
+
+            {/* Show Ultrasound Button */}
+            {!videoPlaying && (
+                <Button className="show-ultrasound" onClick={handleShowUltrasound}>
+                    Show Ultrasound
+                </Button>
+            )}
 
             {/* Video element with overlay button */}
             <div style={{ position: 'relative' }}>
                 <video 
                     ref={videoRef} 
-                    style={{ display: 'none', width: '100%', maxWidth: '600px' }} 
+                    style={{ display: 'none', width: '100vw', height: '100vh', objectFit: 'cover' }} 
                     loop 
                     onEnded={() => { 
                         videoRef.current.pause(); 
                         videoRef.current.style.display = 'none';
+                        setVideoPlaying(false); // Reset video playing status
                     }}
                 >
                     <source src="video.mp4" type="video/mp4" />
                     Your browser does not support HTML5 video.
                 </video>
 
-                {/* Gender button overlay */}
-                {videoRef.current && videoRef.current.style.display === 'block' && (
+                {/* Show Gender button overlay */}
+                {videoPlaying && !genderShown && (
                     <button 
                         onClick={handleShowGender} 
                         className="gender-button"
-                        disabled={genderShown} // Disable after first click
                     >
                         Show Gender
                     </button>

@@ -30,30 +30,33 @@ const App = () => {
         }
     };
 
+    // Function to close the UI
     const handleCloseUi = () => {
-      fetch(`https://ultrasound/closeUi`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'close' })
-      });
+      // Directly handle UI close
+      document.body.style.display = 'none'; // Hide the entire body to close the UI
+      // Alternatively, you can remove NUI focus as well
+      window.parent.postMessage({ action: 'close' }, '*'); // Send a message to close the NUI
   };
-  
 
-    return (
-      <div className="app-container">
-        {!showGender ? (
-          <button className="pink-button" onClick={handleShowGender}>
-            Show Gender
-          </button>
-        ) : (
-          <video className="video-player" autoPlay loop>
-            <source src="/path/to/your/video.mp4" type="video/mp4" />
+  return (
+    <div className="app-container">
+      <button className="show-ultrasound" onClick={handleShowUltrasound}>
+          Show Ultrasound
+      </button>
+      {videoPlaying && (
+        <div className="video-container">
+          <video ref={videoRef} className="video-player" autoPlay loop>
+            <source src="video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        )}
-        <button className="close-button" onClick={handleCloseUi}>Close</button>
-      </div>
-    );
-  }
-  
-  export default App;
+          <button className="gender-button" onClick={handleShowGender}>
+            Show Gender
+          </button>
+          <button className="close-button" onClick={handleCloseUi}>X</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default App;

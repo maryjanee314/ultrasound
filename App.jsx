@@ -30,42 +30,6 @@ const App = () => {
         }
     };
 
-    // Function to take a screenshot
-    const handleScreenshot = () => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
-        canvas.width = videoRef.current.videoWidth;
-        canvas.height = videoRef.current.videoHeight;
-
-        context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-        canvas.toBlob(blob => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const base64data = reader.result; // Convert to base64
-                // Send to server
-                fetch('https://your-server-endpoint/screenshot', { // Update with your server URL
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        image: base64data,
-                        playerName: 'PlayerNameHere', // Update with actual player name
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Screenshot sent successfully:', data);
-                })
-                .catch((error) => {
-                    console.error('Error sending screenshot:', error);
-                });
-            };
-            reader.readAsDataURL(blob);
-        });
-    };
-
     return (
         <div>
             <h1>Ultrasound Menu</h1>
@@ -100,16 +64,6 @@ const App = () => {
                         className="gender-button"
                     >
                         Show Gender
-                    </button>
-                )}
-
-                {/* Screenshot button overlay */}
-                {videoPlaying && (
-                    <button 
-                        onClick={handleScreenshot} 
-                        className="screenshot-button"
-                    >
-                        Take Screenshot
                     </button>
                 )}
             </div>
